@@ -63,3 +63,9 @@ class TestTicTacToe(unittest.TestCase):  # класс с тестами, нас�
         for i, player in enumerate(moves):  # enumerate даёт индекс и значение
             game.make_move(i, player)
         self.assertTrue(game.is_draw())  # должно вернуть True — это ничья
+
+    def test_switch_player(self):  # тест №11: смена игрока
+        game = TicTacToe()
+        self.assertEqual(game.current_player, 'X')  # изначально ходит X
+        game.switch_player()  # меняем игрока
+        self.assertEqual(game.current_player, 'O')  # теперь должен ходить O

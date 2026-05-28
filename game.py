@@ -1,7 +1,8 @@
 class TicTacToe:  # класс игры крестики-нолики
 
-    def __init__(self):  # метод инициализации, вызывается при создании объекта
-        self.board = [' '] * 9  # игровое поле: список из 9 пробелов (3x3)
+    def __init__(self):
+        self.board = [' '] * 9  # игровое поле 3x3
+        self.current_player = 'X'  # первым всегда ходит X
 
     def make_move(self, position, player):      # метод хода с проверкой
         if self.board[position] != ' ':         # если клетка уже занята
@@ -29,3 +30,9 @@ class TicTacToe:  # класс игры крестики-нолики
     def is_draw(self):  # метод проверки ничьей
         return ' ' not in self.board and self.check_winner() is None
         # ничья если: нет пустых клеток И нет победителя
+
+    def switch_player(self):  # метод смены текущего игрока
+        if self.current_player == 'X':  # если сейчас X
+            self.current_player = 'O'  # меняем на O
+        else:  # если сейчас O
+            self.current_player = 'X'  # меняем на X
