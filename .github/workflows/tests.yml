@@ -1,0 +1,18 @@
+name: Run Tests  # название workflow
+
+on: [push]  # запускать при каждом пуше на GitHub
+
+jobs:
+  test:
+    runs-on: ubuntu-latest  # запускаем на виртуальной машине Linux
+    
+    steps:
+      - uses: actions/checkout@v3  # скачиваем код из репозитория
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'  # версия Python
+      
+      - name: Run tests
+        run: python -m unittest test_game.py  # запускаем тесты
