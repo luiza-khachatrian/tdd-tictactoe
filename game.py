@@ -4,11 +4,13 @@ class TicTacToe:  # класс игры крестики-нолики
         self.board = [' '] * 9  # игровое поле 3x3
         self.current_player = 'X'  # первым всегда ходит X
 
-    def make_move(self, position, player):      # метод хода с проверкой
-        if self.board[position] != ' ':         # если клетка уже занята
-            return False                        # запрещаем ход, возвращаем False
-        self.board[position] = player           # иначе записываем знак игрока
-        return True                             # возвращаем True — ход успешен
+    def make_move(self, position, player):
+        if position < 0 or position > 8:  # если позиция вне диапазона 0-8
+            return False  # запрещаем ход
+        if self.board[position] != ' ':  # если клетка занята
+            return False  # запрещаем ход
+        self.board[position] = player  # записываем знак игрока
+        return True  # ход успешен
 
     def check_winner(self):
         # все возможные выигрышные комбинации (строки, столбцы, диагонали)

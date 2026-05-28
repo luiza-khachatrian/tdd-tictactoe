@@ -75,3 +75,8 @@ class TestTicTacToe(unittest.TestCase):  # класс с тестами, нас�
         game.make_move(0, game.current_player)  # X делает ход
         game.switch_player()  # меняем игрока
         self.assertEqual(game.current_player, 'O')  # теперь ходит O
+
+    def test_invalid_position(self):  # тест №13: недопустимая позиция
+        game = TicTacToe()
+        result = game.make_move(9, 'X')  # позиция 9 не существует (только 0-8)
+        self.assertFalse(result)  # должно вернуть False
