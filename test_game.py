@@ -27,5 +27,12 @@ class TestTicTacToe(unittest.TestCase):  # класс с тестами, нас�
         result = game.make_move(0, 'O')  # O пытается занять ту же клетку
         self.assertFalse(result)  # должно вернуть False — ход запрещён
 
+    def test_winner_row(self):  # тест №6: победа по горизонтали
+        game = TicTacToe()
+        game.make_move(0, 'X')  # X на позицию 0
+        game.make_move(1, 'X')  # X на позицию 1
+        game.make_move(2, 'X')  # X на позицию 2 — первая строка заполнена
+        self.assertEqual(game.check_winner(), 'X')  # победитель должен быть X
+
 
 
