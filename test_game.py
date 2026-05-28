@@ -16,5 +16,10 @@ class TestTicTacToe(unittest.TestCase):  # класс с тестами, нас�
         game = TicTacToe()
         self.assertTrue(all(cell == ' ' for cell in game.board))  # все клетки = пробел
 
+    def test_player_x_can_move(self):  # тест №4: игрок X может сделать ход
+        game = TicTacToe()
+        game.make_move(0, 'X')  # делаем ход на позицию 0
+        self.assertEqual(game.board[0], 'X')  # проверяем что клетка 0 теперь = 'X'
+
 
 
