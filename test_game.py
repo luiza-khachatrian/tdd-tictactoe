@@ -21,5 +21,11 @@ class TestTicTacToe(unittest.TestCase):  # класс с тестами, нас�
         game.make_move(0, 'X')  # делаем ход на позицию 0
         self.assertEqual(game.board[0], 'X')  # проверяем что клетка 0 теперь = 'X'
 
+    def test_cannot_move_to_occupied_cell(self):  # тест №5: нельзя ходить на занятую клетку
+        game = TicTacToe()
+        game.make_move(0, 'X')  # X занимает клетку 0
+        result = game.make_move(0, 'O')  # O пытается занять ту же клетку
+        self.assertFalse(result)  # должно вернуть False — ход запрещён
+
 
 
