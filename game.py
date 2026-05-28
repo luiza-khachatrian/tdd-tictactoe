@@ -26,3 +26,6 @@ class TicTacToe:  # класс игры крестики-нолики
                 return self.board[a]  # возвращаем знак победителя
         return None  # если победителя нет — None
 
+    def is_draw(self):  # метод проверки ничьей
+        return ' ' not in self.board and self.check_winner() is None
+        # ничья если: нет пустых клеток И нет победителя

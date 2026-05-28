@@ -54,3 +54,12 @@ class TestTicTacToe(unittest.TestCase):  # класс с тестами, нас�
         game.make_move(1, 'O')  # поле заполнено частично, победителя нет
         self.assertIsNone(game.check_winner())  # должно вернуть None
 
+    def test_draw(self):  # тест №10: ничья
+        game = TicTacToe()
+        # заполняем всё поле так чтобы никто не победил
+        moves = ['X', 'O', 'X',
+                 'X', 'O', 'X',
+                 'O', 'X', 'O']
+        for i, player in enumerate(moves):  # enumerate даёт индекс и значение
+            game.make_move(i, player)
+        self.assertTrue(game.is_draw())  # должно вернуть True — это ничья
