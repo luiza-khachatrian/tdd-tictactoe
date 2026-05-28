@@ -45,3 +45,44 @@ class TicTacToe:  # класс игры крестики-нолики
 
     def empty_cells(self):  # метод подсчёта свободных клеток
         return self.board.count(' ')  # считаем сколько пробелов осталось в списке
+
+
+# этот блок запускается только если файл запускают напрямую (не через тесты)
+if __name__ == '__main__':
+    game = TicTacToe()
+
+    print("Крестики-нолики!")
+    print("Позиции на поле:")
+    print("0 | 1 | 2")
+    print("3 | 4 | 5")
+    print("6 | 7 | 8")
+    print("----------")
+
+    while True:
+        print(f"\n{game.board[0]} | {game.board[1]} | {game.board[2]}")
+        print(f"{game.board[3]} | {game.board[4]} | {game.board[5]}")
+        print(f"{game.board[6]} | {game.board[7]} | {game.board[8]}")
+
+        move = input(f"Игрок {game.current_player}, введи позицию (0-8): ")
+
+        if not move.isdigit():
+            print("Введи число от 0 до 8!")
+            continue
+
+        if not game.make_move(int(move), game.current_player):
+            print("Клетка занята или позиция неверная!")
+            continue
+
+        winner = game.check_winner()
+        if winner:
+            print(f"\n{game.board[0]} | {game.board[1]} | {game.board[2]}")
+            print(f"{game.board[3]} | {game.board[4]} | {game.board[5]}")
+            print(f"{game.board[6]} | {game.board[7]} | {game.board[8]}")
+            print(f"Игрок {winner} победил!")
+            break
+
+        if game.is_draw():
+            print("Ничья!")
+            break
+
+        game.switch_player()
