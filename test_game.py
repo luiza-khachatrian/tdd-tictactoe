@@ -87,3 +87,9 @@ class TestTicTacToe(unittest.TestCase):  # класс с тестами, нас�
         game.reset()  # сбрасываем игру
         self.assertEqual(game.board, [' '] * 9)  # поле снова пустое
         self.assertEqual(game.current_player, 'X')  # снова ходит X
+
+    def test_empty_cells_count(self):  # тест №15: подсчёт свободных клеток
+        game = TicTacToe()
+        game.make_move(0, 'X')  # занимаем клетку 0
+        game.make_move(1, 'O')  # занимаем клетку 1
+        self.assertEqual(game.empty_cells(), 7)  # должно остаться 7 свободных

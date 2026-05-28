@@ -42,3 +42,6 @@ class TicTacToe:  # класс игры крестики-нолики
     def reset(self):  # метод сброса игры в начальное состояние
         self.board = [' '] * 9  # очищаем поле
         self.current_player = 'X'  # возвращаем первого игрока
+
+    def empty_cells(self):  # метод подсчёта свободных клеток
+        return self.board.count(' ')  # считаем сколько пробелов осталось в списке
