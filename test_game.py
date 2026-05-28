@@ -69,3 +69,9 @@ class TestTicTacToe(unittest.TestCase):  # класс с тестами, нас�
         self.assertEqual(game.current_player, 'X')  # изначально ходит X
         game.switch_player()  # меняем игрока
         self.assertEqual(game.current_player, 'O')  # теперь должен ходить O
+
+    def test_player_switches_after_move(self):  # тест №12: игрок меняется после хода
+        game = TicTacToe()
+        game.make_move(0, game.current_player)  # X делает ход
+        game.switch_player()  # меняем игрока
+        self.assertEqual(game.current_player, 'O')  # теперь ходит O
