@@ -38,3 +38,7 @@ class TicTacToe:  # класс игры крестики-нолики
             self.current_player = 'O'  # меняем на O
         else:  # если сейчас O
             self.current_player = 'X'  # меняем на X
+
+    def reset(self):  # метод сброса игры в начальное состояние
+        self.board = [' '] * 9  # очищаем поле
+        self.current_player = 'X'  # возвращаем первого игрока

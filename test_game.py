@@ -80,3 +80,10 @@ class TestTicTacToe(unittest.TestCase):  # класс с тестами, нас�
         game = TicTacToe()
         result = game.make_move(9, 'X')  # позиция 9 не существует (только 0-8)
         self.assertFalse(result)  # должно вернуть False
+
+    def test_reset_game(self):  # тест №14: сброс игры
+        game = TicTacToe()
+        game.make_move(0, 'X')  # делаем ход
+        game.reset()  # сбрасываем игру
+        self.assertEqual(game.board, [' '] * 9)  # поле снова пустое
+        self.assertEqual(game.current_player, 'X')  # снова ходит X
