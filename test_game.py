@@ -34,5 +34,23 @@ class TestTicTacToe(unittest.TestCase):  # класс с тестами, нас�
         game.make_move(2, 'X')  # X на позицию 2 — первая строка заполнена
         self.assertEqual(game.check_winner(), 'X')  # победитель должен быть X
 
+    def test_winner_column(self):  # тест №7: победа по вертикали
+        game = TicTacToe()
+        game.make_move(0, 'O')  # O на позицию 0
+        game.make_move(3, 'O')  # O на позицию 3
+        game.make_move(6, 'O')  # O на позицию 6 — левый столбец заполнен
+        self.assertEqual(game.check_winner(), 'O')
 
+    def test_winner_diagonal(self):  # тест №8: победа по диагонали
+        game = TicTacToe()
+        game.make_move(0, 'X')  # X на позицию 0
+        game.make_move(4, 'X')  # X на позицию 4 (центр)
+        game.make_move(8, 'X')  # X на позицию 8 — главная диагональ
+        self.assertEqual(game.check_winner(), 'X')
+
+    def test_no_winner(self):  # тест №9: победителя нет
+        game = TicTacToe()
+        game.make_move(0, 'X')
+        game.make_move(1, 'O')  # поле заполнено частично, победителя нет
+        self.assertIsNone(game.check_winner())  # должно вернуть None
 

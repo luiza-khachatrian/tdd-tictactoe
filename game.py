@@ -25,3 +25,4 @@ class TicTacToe:  # класс игры крестики-нолики
             if self.board[a] == self.board[b] == self.board[c] != ' ':  # три одинаковых непустых
                 return self.board[a]  # возвращаем знак победителя
         return None  # если победителя нет — None
+
