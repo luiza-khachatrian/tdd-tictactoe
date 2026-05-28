@@ -11,3 +11,10 @@ class TestTicTacToe(unittest.TestCase):  # класс с тестами, нас�
     def test_board_has_9_cells(self):  # тест №2: поле должно иметь 9 клеток
         game = TicTacToe()
         self.assertEqual(len(game.board), 9)  # проверяем что длина списка равна 9
+
+    def test_board_is_empty(self):  # тест №3: поле изначально пустое
+        game = TicTacToe()
+        self.assertTrue(all(cell == ' ' for cell in game.board))  # все клетки = пробел
+
+
+
